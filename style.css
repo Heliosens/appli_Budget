@@ -6,8 +6,51 @@
 
 html {
     font-size: 62.5%;
+    font-family: sans-serif;
 }
 
 body {
     width: 100%;
+    font-size: 2.2rem;
+}
+
+h1 {
+    border-bottom: black 3px solid;
+    padding: .5rem 25rem;
+    margin: 1rem;
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+
+}
+
+section {
+    width: 50%;
+    background-color: teal;
+    margin: 1rem;
+    box-shadow: black 3px 3px 3px 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+#outlay, #income, #saving, #result{
+    border: 3px midnightblue solid;
+}
+
+table {
+    background-color: lightblue;
+    margin: 1rem;
+    border-collapse: collapse;
+}
+
+td {
+    padding: .5rem;
+    border: 1px solid teal;
 }
