@@ -87,10 +87,11 @@ tr td:first-child, #result div {
 }
 
 tr td:last-child {
-    width: 18%;
+    width: 25%;
 }
 
 td {
     border: 1px solid teal;
-    text-align: center;
+    text-align: right;
+    padding-right: .5rem;
 }
