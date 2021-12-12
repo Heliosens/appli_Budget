@@ -1,10 +1,12 @@
 /**
  *  create modal window
- *  .screen id='container',
- *  .box id='theBox' and inner box id='innerBox'
+ *      .screen id='container',
+ *      .box id='theBox' and inner box id='innerBox'
  *  enable to create input element and button
- *  .inputBox id='inputModalId';
- *  .closeBtn id='btnModalId'
+ *      .inputBox id='inputModalId';
+ *  create close button
+ *      .closeBtn id='btnModalId'
+ * @param target
  * @param screenColor
  * @param w
  * @param h
@@ -12,25 +14,25 @@
  * @param border
  * @constructor
  */
-function ModalWindow (screenColor, w, h, boxColor, border){
-    /**
-     * create screen cover
-     */
+function ModalWindow (target, screenColor, w, h, boxColor, border){
+
     this.screen = function (){
         let fullScreen = document.createElement('div');
         fullScreen.style.width = innerWidth + "px";
         fullScreen.style.height = innerHeight + "px";
         fullScreen.style.backgroundColor = screenColor;
+
         fullScreen.style.position = "absolute";
         fullScreen.style.top = "0";
         fullScreen.style.left = "0";
+
         fullScreen.style.display = "flex";
         fullScreen.style.justifyContent = "center";
         fullScreen.style.alignItems = "center";
-        // affect id
+
         fullScreen.id = 'container';
 
-        document.body.appendChild(fullScreen);
+        target.appendChild(fullScreen);
     }
 
     /**
@@ -79,12 +81,13 @@ function ModalWindow (screenColor, w, h, boxColor, border){
     }
 
     /**
-     * create input element in the box
+     *  create input element in the box
+     * @param inputType
      * @param h
      * @param sizeTxt
      * @param txt
      */
-    this.inputBox = function (h = '3rem', sizeTxt = '2rem', txt = ""){
+    this.inputBox = function (inputType, h = '3rem', sizeTxt = '2rem', txt = ""){
         // create label
         let labelFrame = document.createElement('label');
         labelFrame.innerHTML = txt;
@@ -94,7 +97,7 @@ function ModalWindow (screenColor, w, h, boxColor, border){
         inputFrame.style.height = h;
         inputFrame.style.fontSize = sizeTxt;
         inputFrame.name = "inputInBox";
-        inputFrame.type = "number";
+        inputFrame.type = inputType;
 
         // affect id
         inputFrame.id = "inputModalId";
@@ -106,14 +109,15 @@ function ModalWindow (screenColor, w, h, boxColor, border){
     }
 
     /**
-     * get input value and close window
+     * create button to remove modal window
      * @param btnText
+     * @param textSize
      */
-    this.closeBtn = function (btnText){
+    this.closeBtn = function (btnText, textSize){
         // create button
         let btn = document.createElement('button');
         btn.type = "submit";
-        btn.style.fontSize = "2rem";
+        btn.style.fontSize = textSize;
         btn.style.padding = ".5rem 1rem";
         btn.innerHTML = btnText;
         btn.id = "btnFrameId";
@@ -130,4 +134,3 @@ function ModalWindow (screenColor, w, h, boxColor, border){
         theBox.appendChild(btn);
     }
 }
-
