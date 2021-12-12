@@ -16,8 +16,35 @@ let outCount = 0;
 let inCount = 0;
 let resultCount = 0;
 
-let outTable = new budgetTable('outlay');
-outTable.budgetTable('expense', 'Dépenses fixes :');
+let fixed = new BudgetItemTable();
+fixed.budgetTable('outlay', 'fixed');
+fixed.budgetHead('fixed', 'dépenses fixes');
+fixed.budgetBody('fixed');
+fixed.budgetTr('fixed', '<a href="">Loyer et Charges</a>', 0)
+fixed.budgetTr('fixed', '<a href="">Remboursement de crédits</a>', 0);
+fixed.budgetTr('fixed','<a href="">Eau - Electricité - Gaz</a>', 0);
+fixed.budgetTr('fixed','<a href="">Téléphone - Internet</a>', 0);
+fixed.budgetTr('fixed','<a href="">Assurance habitation</a>', 0);
+fixed.budgetTr('fixed','<a href="">Santé</a>', 0);
+fixed.budgetTr('fixed','<a href="">Impôts sur le revenu</a>', 0);
+fixed.budgetTr('fixed','<a href="">Impôts locaux</a>', 0);
+
+let current = new BudgetItemTable();
+current.budgetTable('outlay', 'current');
+current.budgetHead('current', 'Dépenses courantes :');
+current.budgetBody('current');
+current.budgetTr('current', '<a href="">Courses</a>', 0);
+current.budgetTr('current', '<a href="">Frais de transport en commun</a>', 0);
+current.budgetTr('current', '<a href="">Activités sportives et culturelles</a>', 0);
+
+let occasional = new BudgetItemTable();
+occasional.budgetTable('outlay','occasional');
+occasional.budgetHead('occasional', 'Dépenses occasionnelles :');
+occasional.budgetBody('occasional');
+occasional.budgetTr('occasional', '<a href="">Sorties</a>', 0);
+occasional.budgetTr('occasional', '<a href="">Autres dépenses</a>', 0);
+
+
 
 
 for (let item of arrayOut){
