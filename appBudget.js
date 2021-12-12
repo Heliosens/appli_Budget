@@ -16,6 +16,10 @@ let outCount = 0;
 let inCount = 0;
 let resultCount = 0;
 
+let outTable = new Item_budget('outlay');
+outTable.budgetTable('expense', 'Dépenses fixes :');
+
+
 for (let item of arrayOut){
     item.addEventListener('click', function (e){
         e.preventDefault();
