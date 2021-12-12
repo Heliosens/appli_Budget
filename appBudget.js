@@ -4,12 +4,13 @@ main.style.height = innerHeight + "px";
 
 // get items
 let outlay = document.getElementById('outlay').getElementsByTagName('a');
-console.log(outlay);
+let outNbr = document.getElementById('outlay').getElementsByClassName('nbr');
+let income = document.getElementById('income').getElementsByTagName('a');
+
 
 // convert html collection to array
 let arrayOut = Array.from(outlay);
-let income = document.getElementById('income').getElementsByTagName('a');
-console.log(income);
+let arrayIn = Array.from(income);
 
 let count = 0;
 
@@ -26,9 +27,8 @@ for (let item of arrayOut){
         let btn = document.getElementById("theBox").querySelector('button');
 
         btn.addEventListener('click', ()=>{
-            count += isNaN(parseFloat(inputModal.value)) ? 0 : parseFloat(inputModal.value);
-            console.log('index = ' + arrayOut.indexOf(item) + " value = " + count);
-
+            let itemNbr = isNaN(parseFloat(inputModal.value)) ? 0 : parseFloat(inputModal.value);
+            outNbr[arrayOut.indexOf(item)].innerHTML = itemNbr.toFixed(2);
         })
 
     })
