@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Budget mensuel</h1>
+    <h1 id="budget">Budget mensuel</h1>
     <main>
 
         <section id="outlay">
@@ -20,39 +20,35 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Loyer et Charges</td>
+                            <td><a href="">Loyer et Charges</a></td>
                             <td>00.00</td>
                         </tr>
                         <tr>
-                            <td>Remboursement de crédits</td>
+                            <td><a href="">Remboursement de crédits</a></td>
                             <td>00.00</td>
                         </tr>
                         <tr>
-                            <td>Eau/Electricité/Gaz</td>
+                            <td><a href="">Eau - Electricité - Gaz</a></td>
                             <td>00.00</td>
                         </tr>
                         <tr>
-                            <td> Téléphone - Internet</td>
+                            <td><a href="">Téléphone - Internet</a></td>
                             <td>00.00</td>
                         </tr>
                         <tr>
-                            <td>Assurance habitation</td>
+                            <td><a href="">Assurance habitation</a></td>
                             <td>00.00</td>
                         </tr>
                         <tr>
-                            <td>Assurance véhicules</td>
+                            <td><a href="">Santé</a></td>
                             <td>00.00</td>
                         </tr>
                         <tr>
-                            <td>Mutuelle santé</td>
+                            <td><a href="">Impôts sur le revenu</a></td>
                             <td>00.00</td>
                         </tr>
                         <tr>
-                            <td>Impôts sur le revenu</td>
-                            <td>00.00</td>
-                        </tr>
-                        <tr>
-                            <td>Impôts locaux</td>
+                            <td><a href="">Impôts locaux</a></td>
                             <td>00.00</td>
                         </tr>
                     </tbody>
@@ -65,15 +61,15 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Courses<!--(budget hebdomadaire - à reporter sur 31 jours)--></td>
+                            <td><a href="">Courses</a><!--(budget hebdomadaire - à reporter sur 31 jours)--></td>
                             <td>00.00</td>
                         </tr>
                         <tr>
-                            <td>Essence/frais de transport en commun<!--(budget hebdomadaire - à reporter sur 31 jours)--></td>
+                            <td><a href="">Frais de transport en commun</a><!--(budget hebdomadaire - à reporter sur 31 jours)--></td>
                             <td>00.00</td>
                         </tr>
                         <tr>
-                            <td>Activités sportives et culturelles<!--(budget annuel - à reporter sur 1 mois)--></td>
+                            <td><a href="">Activités sportives et culturelles</a><!--(budget annuel - à reporter sur 1 mois)--></td>
                             <td>00.00</td>
                         </tr>
                     </tbody>
@@ -86,11 +82,11 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Sorties<!--(budget hebdomadaire - à reporter sur 31 jours)--></td>
+                            <td><a href="">Sorties</a><!--(budget hebdomadaire - à reporter sur 31 jours)--></td>
                             <td>00.00</td>
                         </tr>
                         <tr>
-                            <td>Autres dépenses</td>
+                            <td><a href="">Autres dépenses</a></td>
                             <td>00.00</td>
                         </tr>
                     </tbody>
@@ -102,19 +98,19 @@
             <table>
                 <tbody>
                     <tr>
-                        <td>Salaires</td>
+                        <td><a href="">Salaires</a></td>
                         <td>00.00</td>
                     </tr>
                     <tr>
-                        <td>Aides</td>
+                        <td><a href="">Aides</a></td>
                         <td>00.00</td>
                     </tr>
                     <tr>
-                        <td>Rentes</td>
+                        <td><a href="">Rentes</a></td>
                         <td>00.00</td>
                     </tr>
                     <tr>
-                        <td>Autres</td>
+                        <td><a href="">Autres recettes</a></td>
                         <td>00.00</td>
                     </tr>
                 </tbody>
@@ -134,8 +130,10 @@
 
         <section id="result">
             <h2>Résultat</h2>
-            <p>00.00</p>
-            <p>Votre budget...</p> <!--    budget négatif, budget nul, budget positif  -->
+            <div>
+                <p id="total">00.00</p>
+                <p>Info budget...</p> <!--    budget négatif, budget nul, budget positif  -->
+            </div>
         </section>
     </main>
     <script src="appModal.js"></script>
