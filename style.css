@@ -27,12 +27,12 @@ main {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-
+    position: relative;
 }
 
 section {
     width: 50%;
-    background-color: teal;
+    background-color: #4080ddf0;
     margin: 1rem;
     box-shadow: black 3px 3px 3px 3px;
     display: flex;
@@ -40,12 +40,23 @@ section {
     justify-content: left;
 }
 
+/**    modal window    **/
+#theBox h1 {
+    width: 100%;
+    border-bottom: #add8e6 5px solid;
+    text-align: center;
+}
+
+#innerBox {
+    height: 15vh;
+}
+
 table, #total {
-    background-color: #add8e685;
+    background-color: #add8e6;
 }
 
 #outlay, #income, #saving, #result{
-    border: 3px midnightblue solid;
+    border: 3px #191970 solid;
 }
 
 table, #result div {

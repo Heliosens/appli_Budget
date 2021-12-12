@@ -64,16 +64,20 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
         theBox.appendChild(h1);
 
         // create inner box id='innerBox'
-        let div = document.createElement('div');
-        div.style.textAlign = "center";
-        div.id = "innerBox";
-        theBox.appendChild(div);
+        let innerBox = document.createElement('div');
+        innerBox.style.textAlign = "center";
+        innerBox.style.display = "flex";
+        innerBox.style.flexDirection = "column";
+        innerBox.style.justifyContent = "space-around";
+        innerBox.style.alignItems = "center";
+        innerBox.id = "innerBox";
+        theBox.appendChild(innerBox);
 
         // add text
         let p = document.createElement('p');
         p.innerHTML = (text).toString();
         p.style.margin = '1rem';
-        div.appendChild(p);
+        innerBox.appendChild(p);
 
         // append in container
         let container = document.getElementById('container');
@@ -88,6 +92,7 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
      * @param txt
      */
     this.inputBox = function (inputType, h = '3rem', sizeTxt = '2rem', txt = ""){
+        let div = document.createElement('div');
         // create label
         let labelFrame = document.createElement('label');
         labelFrame.innerHTML = txt;
@@ -103,8 +108,9 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
         inputFrame.id = "inputModalId";
 
         let innerBox = document.getElementById('innerBox');
-        innerBox.appendChild(labelFrame);
-        innerBox.appendChild(inputFrame);
+        div.appendChild(labelFrame);
+        div.appendChild(inputFrame);
+        innerBox.appendChild(div);
         inputFrame.focus();
     }
 
