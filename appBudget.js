@@ -16,7 +16,7 @@ let outCount = 0;
 let inCount = 0;
 let resultCount = 0;
 
-let outTable = new Item_budget('outlay');
+let outTable = new budgetTable('outlay');
 outTable.budgetTable('expense', 'Dépenses fixes :');
 
 
