@@ -51,7 +51,7 @@ section {
     height: 15vh;
 }
 
-table, #total {
+table, #result div {
     background-color: #add8e6;
 }
 

@@ -6,13 +6,15 @@ main.style.height = innerHeight + "px";
 let outlay = document.getElementById('outlay').getElementsByTagName('a');
 let outNbr = document.getElementById('outlay').getElementsByClassName('nbr');
 let income = document.getElementById('income').getElementsByTagName('a');
-
+let result = document.getElementById('result').getElementsByClassName('nbrResult');
 
 // convert html collection to array
 let arrayOut = Array.from(outlay);
 let arrayIn = Array.from(income);
 
-let count = 0;
+let outCount = 0;
+let inCount = 0;
+let resultCount = 0;
 
 for (let item of arrayOut){
     item.addEventListener('click', function (e){
@@ -25,16 +27,17 @@ for (let item of arrayOut){
         frame.closeBtn('valider', '2rem');
         let inputModal = document.getElementById("inputModalId");
         let btn = document.getElementById("theBox").querySelector('button');
-
+        // validation btn
         btn.addEventListener('click', ()=>{
             let itemNbr = isNaN(parseFloat(inputModal.value)) ? 0 : parseFloat(inputModal.value);
             outNbr[arrayOut.indexOf(item)].innerHTML = itemNbr.toFixed(2);
+            outCount += itemNbr;
+            result[0].innerHTML = outCount.toFixed(2);
+            result[1].innerHTML = inCount.toFixed(2);
+            result[2].innerHTML = (inCount - outCount).toFixed(2);
         })
-
     })
 }
-
-
 
 // for(let item of income){
 //     item.addEventListener('click', function (e){
