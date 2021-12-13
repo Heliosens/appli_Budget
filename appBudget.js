@@ -5,6 +5,7 @@ main.style.height = innerHeight + "px";
 // get button
 let reset = document.getElementById('reset');
 
+// create elements
 let fixed = new BudgetItemTable();
 fixed.budgetTable('outlay', 'fixed');
 fixed.budgetHead('fixed', 'dépenses fixes');
@@ -93,15 +94,13 @@ for (let item of arrayLink){
                     }
                 }
             }
-
             allNbr[i -3].innerHTML = outCount.toFixed(2);
             allNbr[i - 2].innerHTML = inCount.toFixed(2);
             allNbr[i - 1].innerHTML = (inCount - outCount).toFixed(2);
-
-
         })
     })
 }
+
 let cases = Array.from(allNbr);
 reset.addEventListener('click', ()=> {
     for(let item of cases){
@@ -110,4 +109,4 @@ reset.addEventListener('click', ()=> {
         }
     }
     console.log('ici');
-})
+}

@@ -6,6 +6,32 @@ function BudgetItemTable (){
     /**
      *
      * @param target
+     * @param sideId
+     */
+    this.budgetSection = function (target, sideId){
+        let place = document.getElementById(target);
+        let sec = document.createElement('section');
+        sec.id = sideId;
+    }
+
+    /**
+     *
+     * @param target
+     * @param divId
+     * @param divTitle
+     */
+    this.budgetPart = function (target, divId, divTitle){
+        let place = document.getElementById(target);
+        let div = document.createElement('div');
+        div.id = divId;
+        let title = document.createElement('h2');
+        title.innerHTML = divTitle;
+        place.appendChild(div).appendChild(title);
+    }
+
+    /**
+     *
+     * @param target
      * @param tableId
      */
     this.budgetTable = function (target, tableId){
