@@ -74,6 +74,7 @@ for (let item of arrayLink){
             allNbr[arrayLink.indexOf(item) *2 + 1].innerHTML = itemNbr.toFixed(2);
 
             // count
+            let i = allNbr.length;
             let outCount = 0;
             let inCount = 0;
             let arrNbr = Array.from(allNbr);
@@ -84,17 +85,17 @@ for (let item of arrayLink){
                         outCount += parseFloat(item.innerHTML);
                     }
                 }
-                else {
+                else if (arrNbr.indexOf(item) < i - 3) {
                     if(Number.isInteger(parseFloat(item.innerHTML))){
                         console.log(item.innerHTML);
                         inCount += parseFloat(item.innerHTML);
                     }
                 }
             }
-            allNbr[37].innerHTML = outCount.toFixed();
-            allNbr[38].innerHTML = inCount.toFixed();
-            allNbr[39].innerHTML = (inCount - outCount).toFixed();
+
+            allNbr[i -3].innerHTML = outCount.toFixed();
+            allNbr[i - 2].innerHTML = inCount.toFixed();
+            allNbr[i - 1].innerHTML = (inCount - outCount).toFixed();
         })
     })
 }
-
