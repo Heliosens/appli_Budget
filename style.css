@@ -110,3 +110,8 @@ td {
     text-align: right;
     padding-right: .5rem;
 }
+
+#reset {
+    font-size: 2rem;
+    padding: .5rem 1rem;
+}

@@ -2,6 +2,9 @@
 let main = document.querySelector('main');
 main.style.height = innerHeight + "px";
 
+// get button
+let reset = document.getElementById('reset');
+
 let fixed = new BudgetItemTable();
 fixed.budgetTable('outlay', 'fixed');
 fixed.budgetHead('fixed', 'dépenses fixes');
@@ -46,10 +49,8 @@ result.budgetTr('result', 0, 0, 0);
 
 // get items
 let allLink = main.getElementsByTagName('a');
-console.log(allLink);
 
 let allNbr = main.getElementsByTagName('td');
-console.log(allNbr);
 
 // convert html collection to array
 let arrayLink = Array.from(allLink);
@@ -93,9 +94,20 @@ for (let item of arrayLink){
                 }
             }
 
-            allNbr[i -3].innerHTML = outCount.toFixed();
-            allNbr[i - 2].innerHTML = inCount.toFixed();
-            allNbr[i - 1].innerHTML = (inCount - outCount).toFixed();
+            allNbr[i -3].innerHTML = outCount.toFixed(2);
+            allNbr[i - 2].innerHTML = inCount.toFixed(2);
+            allNbr[i - 1].innerHTML = (inCount - outCount).toFixed(2);
+
+
         })
     })
 }
+let cases = Array.from(allNbr);
+reset.addEventListener('click', ()=> {
+    for(let item of cases){
+        if(Number.isInteger(parseFloat(item.innerHTML))){
+            allNbr[cases.indexOf(item)].innerHTML = (0).toFixed(2);
+        }
+    }
+    console.log('ici');
+})
