@@ -9,69 +9,27 @@
 <body>
     <h1 id="budget">Budget mensuel</h1>
     <main>
-
-        <section id="outlay">
+        <section class="count" id="outlay">
             <h2>Dépenses</h2>
         </section>
 
-        <section id="income">
+        <section class="count" id="income">
             <h2>Recettes</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="">Salaires</a></td>
-                        <td class="nbr">0</td>
-                    </tr>
-                    <tr>
-                        <td><a href="">Aides</a></td>
-                        <td class="nbr">0</td>
-                    </tr>
-                    <tr>
-                        <td><a href="">Rentes</a></td>
-                        <td class="nbr">0</td>
-                    </tr>
-                    <tr>
-                        <td><a href="">Autres recettes</a></td>
-                        <td class="nbr">0</td>
-                    </tr>
-                </tbody>
-            </table>
         </section>
 
         <section id="saving">
             <h2>Epargne</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td id="nbr">0</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div>
+                <span>Montant</span>
+                <span>0.00</span>
+            </div>
         </section>
 
-        <section id="result">
+        <section class="count" id="result">
             <h2>Résultat</h2>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Dépenses</td>
-                            <td>Recettes</td>
-                            <td>Résultat</td>
-                        </tr>
-                        <tr>
-                            <td class="nbrResult"></td>
-                            <td class="nbrResult"></td>
-                            <td class="nbrResult"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            <p>Info budget...</p> <!--    budget négatif, budget nul, budget positif  -->
         </section>
+        <!--    budget négatif, budget nul, budget positif  -->
+        <p>--Info budget--</p>
     </main>
     <script src="BudgetItemTable.js"></script>
     <script src="Modal.js"></script>

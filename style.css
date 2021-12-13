@@ -51,7 +51,7 @@ section {
     height: 15vh;
 }
 
-table, #result div {
+table {
     background-color: #add8e6;
 }
 
@@ -75,6 +75,21 @@ table a {
 table a:hover {
     font-weight: bold;
     background-color: lightblue;
+}
+
+#saving div {
+    background-color: #add8e6;
+    margin: 1rem;
+    text-align: right;
+}
+
+#saving span {
+    display: inline-block;
+    width: 25%;
+}
+
+#saving span:last-child {
+    border-left: 1px solid teal;;
 }
 
 th {

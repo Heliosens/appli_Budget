@@ -1,5 +1,13 @@
+/**
+ * create table id in param
+ * @constructor
+ */
 function BudgetItemTable (){
-
+    /**
+     *
+     * @param target
+     * @param tableId
+     */
     this.budgetTable = function (target, tableId){
         let place = document.getElementById(target);
         let table = document.createElement('table');
@@ -7,6 +15,11 @@ function BudgetItemTable (){
         place.appendChild(table);
     }
 
+    /**
+     *
+     * @param tableId
+     * @param txtHead
+     */
     this.budgetHead = function (tableId, txtHead) {
         let place = document.getElementById(tableId);
         let thead = document.createElement('thead');
@@ -16,12 +29,21 @@ function BudgetItemTable (){
         place.appendChild(thead).appendChild(tr).appendChild(th);
     }
 
+    /**
+     *
+     * @param tableId
+     */
     this.budgetBody = function (tableId){
         let place = document.getElementById(tableId);
         let tbody = document.createElement('tbody');
         place.appendChild(tbody);
     }
 
+    /**
+     *
+     * @param tableId
+     * @param itemHtml
+     */
     this.budgetTr = function (tableId, ...itemHtml){
         let place = document.getElementById(tableId).querySelector('tbody');
         let tr = document.createElement('tr');

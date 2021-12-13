@@ -2,20 +2,6 @@
 let main = document.querySelector('main');
 main.style.height = innerHeight + "px";
 
-// get items
-let outlay = document.getElementById('outlay').getElementsByTagName('a');
-let outNbr = document.getElementById('outlay').getElementsByClassName('nbr');
-let income = document.getElementById('income').getElementsByTagName('a');
-let result = document.getElementById('result').getElementsByClassName('nbrResult');
-
-// convert html collection to array
-let arrayOut = Array.from(outlay);
-let arrayIn = Array.from(income);
-
-let outCount = 0;
-let inCount = 0;
-let resultCount = 0;
-
 let fixed = new BudgetItemTable();
 fixed.budgetTable('outlay', 'fixed');
 fixed.budgetHead('fixed', 'dépenses fixes');
@@ -44,12 +30,34 @@ occasional.budgetBody('occasional');
 occasional.budgetTr('occasional', '<a href="">Sorties</a>', 0);
 occasional.budgetTr('occasional', '<a href="">Autres dépenses</a>', 0);
 
+let income = new BudgetItemTable();
+income.budgetTable('income', 'inNbr');
+income.budgetBody('inNbr');
+income.budgetTr('income', '<a href="">Salaires</a>', 0);
+income.budgetTr('income', '<a href="">Aides</a>', 0);
+income.budgetTr('income', '<a href="">Rentes</a>', 0);
+income.budgetTr('income', '<a href="">Autres recettes</a>', 0);
 
+let result = new BudgetItemTable();
+result.budgetTable('result', 'totalResult');
+result.budgetBody('totalResult');
+result.budgetTr('result', 'Dépenses', 'Recettes', 'Résultat');
+result.budgetTr('result', 0, 0, 0);
 
+// get items
+let allLink = main.getElementsByTagName('a');
+console.log(allLink);
 
-for (let item of arrayOut){
+let allNbr = main.getElementsByTagName('td');
+console.log(allNbr);
+
+// convert html collection to array
+let arrayLink = Array.from(allLink);
+
+for (let item of arrayLink){
     item.addEventListener('click', function (e){
         e.preventDefault();
+
         // invoke modal window
         let frame = new ModalWindow(main,'rgba(173, 216, 230, 0.8)', '50%', '50vh', 'white', '3px double black');
         frame.screen();
@@ -58,22 +66,35 @@ for (let item of arrayOut){
         frame.closeBtn('valider', '2rem');
         let inputModal = document.getElementById("inputModalId");
         let btn = document.getElementById("theBox").querySelector('button');
+
         // validation btn
         btn.addEventListener('click', ()=>{
+            // recup input value
             let itemNbr = isNaN(parseFloat(inputModal.value)) ? 0 : parseFloat(inputModal.value);
-            outNbr[arrayOut.indexOf(item)].innerHTML = itemNbr.toFixed(2);
-            outCount += itemNbr;
-            result[0].innerHTML = outCount.toFixed(2);
-            result[1].innerHTML = inCount.toFixed(2);
-            result[2].innerHTML = (inCount - outCount).toFixed(2);
+            allNbr[arrayLink.indexOf(item) *2 + 1].innerHTML = itemNbr.toFixed(2);
+
+            // count
+            let outCount = 0;
+            let inCount = 0;
+            let arrNbr = Array.from(allNbr);
+            for (let item of arrNbr){
+                if(arrNbr.indexOf(item) <= 25){
+                    if(Number.isInteger(parseFloat(item.innerHTML))){
+                        console.log(item.innerHTML);
+                        outCount += parseFloat(item.innerHTML);
+                    }
+                }
+                else {
+                    if(Number.isInteger(parseFloat(item.innerHTML))){
+                        console.log(item.innerHTML);
+                        inCount += parseFloat(item.innerHTML);
+                    }
+                }
+            }
+            allNbr[37].innerHTML = outCount.toFixed();
+            allNbr[38].innerHTML = inCount.toFixed();
+            allNbr[39].innerHTML = (inCount - outCount).toFixed();
         })
     })
 }
 
-// for(let item of income){
-//     item.addEventListener('click', function (e){
-//         e.preventDefault();
-//         console.log(item.innerHTML);
-//     })
-// }
-//
