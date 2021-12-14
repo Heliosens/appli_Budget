@@ -102,6 +102,7 @@ for (let item of arrayLink){
 }
 
 let cases = Array.from(allNbr);
+
 reset.addEventListener('click', ()=> {
     for(let item of cases){
         if(Number.isInteger(parseFloat(item.innerHTML))){
@@ -109,4 +110,4 @@ reset.addEventListener('click', ()=> {
         }
     }
     console.log('ici');
-}
+})
