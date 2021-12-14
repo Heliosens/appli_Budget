@@ -39,8 +39,8 @@ place.budgetType("saving", "", "Epargne", "Epargne")
 // create income
 place.budgetType("income", "in", "Recettes", "Salaires", "Aides", "Rentes", "Autres recettes");
 
-// listen link
+// listen links open modal window
 place.writeValue();
 
-// create buttons and count
+// create buttons to count and reset
 place.count();
