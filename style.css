@@ -11,44 +11,24 @@ html {
 
 body {
     width: 100%;
-    font-size: 2.2rem;
-}
-
-#budget {
-    border-bottom: black 3px solid;
-    padding: .5rem 25rem;
-    margin: 1rem;
 }
 
 main {
-    width: 85%;
-    margin: 0 auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     position: relative;
 }
 
 section {
-    width: 50%;
+    width: 48%;
     background-color: #4080ddf0;
-    margin: 1rem;
+    margin: .5rem;
     box-shadow: black 3px 3px 3px 3px;
     display: flex;
     flex-direction: column;
-    justify-content: left;
-}
-
-/**    modal window    **/
-#theBox h1 {
-    width: 100%;
-    border-bottom: #add8e6 5px solid;
-    text-align: center;
-}
-
-#innerBox {
-    height: 15vh;
 }
 
 table {
@@ -111,7 +91,8 @@ td {
     padding-right: .5rem;
 }
 
-#reset {
-    font-size: 2rem;
-    padding: .5rem 1rem;
+/**    modal window    **/
+#theBox h1 {
+    width: 100%;
+    text-align: center;
 }

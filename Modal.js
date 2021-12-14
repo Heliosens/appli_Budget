@@ -50,10 +50,6 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
         theBox.style.height = h;
         theBox.style.padding = "1vh";
         theBox.style.fontFamily = "sans-serif";
-        theBox.style.display = "flex";
-        theBox.style.flexDirection = "column";
-        theBox.style.justifyContent = "space-around";
-        theBox.style.alignItems = "center";
 
         // affect id
         theBox.id = "theBox";

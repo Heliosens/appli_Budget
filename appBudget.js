@@ -2,55 +2,38 @@
 let main = document.querySelector('main');
 main.style.height = innerHeight + "px";
 
-// get button
-let reset = document.getElementById('reset');
 
-// create elements
-let fixed = new BudgetItemTable();
-fixed.budgetTable('outlay', 'fixed');
-fixed.budgetHead('fixed', 'dépenses fixes');
-fixed.budgetBody('fixed');
-fixed.budgetTr('fixed', '<a href="">Loyer et Charges</a>', 0)
-fixed.budgetTr('fixed', '<a href="">Remboursement de crédits</a>', 0);
-fixed.budgetTr('fixed','<a href="">Eau - Electricité - Gaz</a>', 0);
-fixed.budgetTr('fixed','<a href="">Téléphone - Internet</a>', 0);
-fixed.budgetTr('fixed','<a href="">Assurance habitation</a>', 0);
-fixed.budgetTr('fixed','<a href="">Santé</a>', 0);
-fixed.budgetTr('fixed','<a href="">Impôts sur le revenu</a>', 0);
-fixed.budgetTr('fixed','<a href="">Impôts locaux</a>', 0);
+let place = new BudgetTable(main);
+place.titleTxt("Budget mensuel", "title");
 
-let current = new BudgetItemTable();
-current.budgetTable('outlay', 'current');
-current.budgetHead('current', 'Dépenses courantes :');
-current.budgetBody('current');
-current.budgetTr('current', '<a href="">Courses</a>', 0);
-current.budgetTr('current', '<a href="">Frais de transport en commun</a>', 0);
-current.budgetTr('current', '<a href="">Activités sportives et culturelles</a>', 0);
+// create differents section
+place.budgetSection("outlay", "Dépenses");
+place.budgetSection("income", "Recettes");
+place.budgetSection("saving", "Epargne");
+place.budgetSection("result", "Résultat")
 
-let occasional = new BudgetItemTable();
-occasional.budgetTable('outlay','occasional');
-occasional.budgetHead('occasional', 'Dépenses occasionnelles :');
-occasional.budgetBody('occasional');
-occasional.budgetTr('occasional', '<a href="">Sorties</a>', 0);
-occasional.budgetTr('occasional', '<a href="">Autres dépenses</a>', 0);
+// create outlays fixe
+place.budgetType("outlay", "Dépenses fixes", "Loyer et Charges", "Remboursement de crédits",
+    "Eau - Electricité - Gaz", "Téléphone - Internet", "Assurance habitation", "Santé", "Impôts sur le revenu",
+    "Impôts locaux");
 
-let income = new BudgetItemTable();
-income.budgetTable('income', 'inNbr');
-income.budgetBody('inNbr');
-income.budgetTr('income', '<a href="">Salaires</a>', 0);
-income.budgetTr('income', '<a href="">Aides</a>', 0);
-income.budgetTr('income', '<a href="">Rentes</a>', 0);
-income.budgetTr('income', '<a href="">Autres recettes</a>', 0);
+// create outlays current
+place.budgetType("outlay", "Dépenses courantes", "Courses", "Frais de transport en commun",
+    "Activités sportives et culturelles");
 
-let result = new BudgetItemTable();
-result.budgetTable('result', 'totalResult');
-result.budgetBody('totalResult');
-result.budgetTr('result', 'Dépenses', 'Recettes', 'Résultat');
-result.budgetTr('result', 0, 0, 0);
+// create outlays occasional
+place.budgetType("outlay", "Dépenses occasionnelles", "Sorties", "Autres dépenses");
+
+// saving
+place.budgetType("saving", "Epargne", "Epargne")
+
+// create income
+place.budgetType("income", "Salaires", "Aides", "Rentes", "Autres recettes");
+
+place.budgetType("result", "Total", 'Dépenses', 'Recettes', 'Résultat');
 
 // get items
 let allLink = main.getElementsByTagName('a');
-
 let allNbr = main.getElementsByTagName('td');
 
 // convert html collection to array
@@ -64,8 +47,8 @@ for (let item of arrayLink){
         let frame = new ModalWindow(main,'rgba(173, 216, 230, 0.8)', '50%', '50vh', 'white', '3px double black');
         frame.screen();
         frame.box("Poste de dépense",item.innerHTML);
-        frame.inputBox("number","3rem", "2rem", "montant ");
-        frame.closeBtn('valider', '2rem');
+        frame.inputBox("number","2rem", "2rem", "montant ");
+        frame.closeBtn('valider', '1rem');
         let inputModal = document.getElementById("inputModalId");
         let btn = document.getElementById("theBox").querySelector('button');
 
@@ -109,5 +92,4 @@ reset.addEventListener('click', ()=> {
             allNbr[cases.indexOf(item)].innerHTML = (0).toFixed(2);
         }
     }
-    console.log('ici');
 })
