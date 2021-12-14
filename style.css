@@ -11,6 +11,7 @@ html {
 
 body {
     width: 100%;
+    font-size: 2rem;
 }
 
 main {
@@ -97,6 +98,10 @@ td {
 /**    modal window    **/
 #theBox {
     text-align: center;
+}
+
+button {
+    font-size: 2rem;
 }
 
 @media screen and (max-width: 450px){

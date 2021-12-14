@@ -34,7 +34,7 @@ place.budgetType("outlay", "out", "Dépenses courantes", "Courses", "Frais de tr
 place.budgetType("outlay", "out", "Dépenses occasionnelles", "Sorties", "Autres dépenses");
 
 // saving
-place.budgetType("saving", "", "Epargne", "Epargne")
+place.budgetType("saving", "", "Epargne", "Epargne");
 
 // create income
 place.budgetType("income", "in", "Recettes", "Salaires", "Aides", "Rentes", "Autres recettes");
