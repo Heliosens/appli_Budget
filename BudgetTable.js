@@ -2,33 +2,32 @@
  * create table id in param
  * @constructor
  */
-function BudgetTable (targetElem){
-    // where place the object
-    this.element = targetElem;
-
+function BudgetTable (){
     /**
      * create h1
+     * @param targetElem
      * @param title
      * @param titleId
      */
-    this.titleTxt = function (title, titleId){
+    this.titleTxt = function (targetElem, title, titleId){
         let h1 = document.createElement('h1');
         h1.id = titleId;
         h1.innerHTML = title;
-        document.body.prepend(h1);
+        targetElem.prepend(h1);
     }
 
     /**
      * create section for outlay or income or saving or result
+     * @param targetElem
      * @param secId
      * @param txt
      */
-    this.budgetSection = function (secId, txt){
+    this.budgetSection = function (targetElem, secId, txt){
         let sec = document.createElement('section');
         sec.id = secId;
         let h2 = document.createElement('h2');
         h2.innerHTML = txt;
-        this.element.appendChild(sec).appendChild(h2);
+        targetElem.appendChild(sec).appendChild(h2);
     }
 
     /**
