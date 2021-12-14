@@ -81,13 +81,14 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
     }
 
     /**
-     *  create input element in the box
+     *
      * @param inputType
      * @param h
      * @param sizeTxt
      * @param txt
+     * @param alignRight
      */
-    this.inputBox = function (inputType, h = '3rem', sizeTxt = '2rem', txt = ""){
+    this.inputBox = function (inputType, h = '3rem', sizeTxt = '', txt = "", alignRight = false){
         let div = document.createElement('div');
         // create label
         let labelFrame = document.createElement('label');
@@ -96,7 +97,9 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
         // create input
         let inputFrame = document.createElement('input');
         inputFrame.style.height = h;
+        inputFrame.style.width = "30vw";
         inputFrame.style.fontSize = sizeTxt;
+        inputFrame.style.textAlign = alignRight ? "right" : "left";
         inputFrame.name = "inputInBox";
         inputFrame.type = inputType;
 
@@ -121,6 +124,7 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
         btn.type = "submit";
         btn.style.fontSize = textSize;
         btn.style.padding = ".5rem 1rem";
+        btn.style.margin = "1vw";
         btn.innerHTML = btnText;
         btn.id = "btnFrameId";
         btn.type = "submit";
@@ -135,4 +139,5 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
         let theBox = document.getElementById('theBox');
         theBox.appendChild(btn);
     }
+
 }
