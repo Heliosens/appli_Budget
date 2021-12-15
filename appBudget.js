@@ -19,25 +19,25 @@ place.budgetSection(side2,"income", "Entrées");
 place.budgetSection(side2,"saving", "Epargne");
 place.budgetSection(side2, "count", "Résultat");
 
-place.budgetResult('count', 'Dépenses', 'Recettes', 'Résultat');
+place.budgetResult('count', 'Dépenses', 'Recettes', 'Solde');
 
 // create outlays fixe
-place.budgetType("outlay", "out", "Dépenses fixes", "Loyer et Charges", "Remboursement de crédits",
+place.budgetItem("outlay", "out", "Dépenses fixes", "Loyer et Charges", "Remboursement de crédits",
     "Eau - Electricité - Gaz", "Téléphone - Internet", "Assurance habitation", "Santé", "Impôts sur le revenu",
     "Impôts locaux");
 
 // create outlays current
-place.budgetType("outlay", "out", "Dépenses courantes", "Courses", "Frais de transport en commun",
+place.budgetItem("outlay", "out", "Dépenses courantes", "Courses", "Frais de transport en commun",
     "Activités sportives et culturelles");
 
 // create outlays occasional
-place.budgetType("outlay", "out", "Dépenses occasionnelles", "Sorties", "Autres dépenses");
+place.budgetItem("outlay", "out", "Dépenses occasionnelles", "Sorties", "Autres dépenses");
 
 // saving
-place.budgetType("saving", "", "Epargne", "Epargne");
+place.budgetItem("saving", "", "Epargne", "Epargne");
 
 // create income
-place.budgetType("income", "in", "Recettes", "Salaires", "Aides", "Rentes", "Autres recettes");
+place.budgetItem("income", "in", "Recettes", "Salaires", "Aides", "Rentes", "Autres recettes");
 
 // listen links open modal window
 place.writeValue();

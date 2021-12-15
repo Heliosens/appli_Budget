@@ -1,5 +1,5 @@
 /**
- * create table id in param
+ * create title, section,
  * @constructor
  */
 function BudgetTable (){
@@ -32,13 +32,13 @@ function BudgetTable (){
 
      /**
      * create div with title in targeted section,
-     * give className to amount
+     * give className to amount "out" for expense, "in" for income
      * @param secId
      * @param signe
      * @param headName
      * @param itemHtml
      */
-    this.budgetType = function (secId, signe, headName, ...itemHtml){
+    this.budgetItem = function (secId, signe, headName, ...itemHtml){
         // create and place table
         let place = document.getElementById(secId);
         let table = document.createElement('table');
@@ -73,29 +73,8 @@ function BudgetTable (){
     }
 
     /**
-     * create result element
-     * @param targetId
-     * @param itemHtml
+     * listen click on item to open modal window and write user answer
      */
-    this.budgetResult = function (targetId, ...itemHtml){
-        let place = document.getElementById(targetId);
-        let table = document.createElement('table');
-        let tbody = document.createElement('tbody');
-
-        for(let line of itemHtml){
-            let tr = document.createElement('tr');
-            let td = document.createElement('td');
-            let tdNbr = document.createElement('td');
-            tdNbr.className = "total";
-            td.innerHTML = line;
-            tdNbr.innerHTML = (0).toFixed(2);
-            tr.appendChild(td);
-            tr.appendChild(tdNbr);
-            tbody.appendChild(tr);
-        }
-        place.appendChild(table).appendChild(tbody);
-    }
-
     this.writeValue = function () {
         // get items
         let allLink = main.getElementsByTagName('a');
@@ -128,6 +107,34 @@ function BudgetTable (){
             })
         }
     }
+
+    /**
+     * create result element
+     * @param targetId
+     * @param itemHtml
+     */
+    this.budgetResult = function (targetId, ...itemHtml){
+        let place = document.getElementById(targetId);
+        let table = document.createElement('table');
+        let tbody = document.createElement('tbody');
+        let info = document.createElement('div');
+        info.id = "info";
+
+        for(let line of itemHtml){
+            let tr = document.createElement('tr');
+            let td = document.createElement('td');
+            let tdNbr = document.createElement('td');
+            tdNbr.className = "total";
+            td.innerHTML = line;
+            tdNbr.innerHTML = (0).toFixed(2);
+            tr.appendChild(td);
+            tr.appendChild(tdNbr);
+            tbody.appendChild(tr);
+        }
+        place.appendChild(table).appendChild(tbody);
+        place.appendChild(info);
+    }
+
 
     /**
      * create button in footer
@@ -167,9 +174,20 @@ function BudgetTable (){
                 inAmount += parseFloat(item.innerHTML);
             }
             let total = document.getElementsByClassName("total");
+            let info = document.getElementById("info");
             total[0].innerHTML = outAmount.toFixed(2);
             total[1].innerHTML = inAmount.toFixed(2);
-            total[2].innerHTML = (inAmount - outAmount).toFixed(2);
+            let sum = inAmount - outAmount;
+            total[2].innerHTML = sum.toFixed(2);
+            if(sum < 0){
+                total[2].style.color = "green";
+                info.innerHTML = "Votre solde est positif";
+            }
+            else {
+                total[2].style.color = "red";
+                info.innerHTML = "Votre solde est négatif";
+            }
+
         })
 
         resetBtn.addEventListener('click', function (){
@@ -179,6 +197,7 @@ function BudgetTable (){
                     item.innerHTML = (0).toFixed(2);
                 }
             }
+
         })
     }
 }
