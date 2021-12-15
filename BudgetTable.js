@@ -117,8 +117,6 @@ function BudgetTable (){
         let place = document.getElementById(targetId);
         let table = document.createElement('table');
         let tbody = document.createElement('tbody');
-        let info = document.createElement('div');
-        info.id = "info";
 
         for(let line of itemHtml){
             let tr = document.createElement('tr');
@@ -132,9 +130,7 @@ function BudgetTable (){
             tbody.appendChild(tr);
         }
         place.appendChild(table).appendChild(tbody);
-        place.appendChild(info);
     }
-
 
     /**
      * create button in footer
@@ -161,10 +157,9 @@ function BudgetTable (){
         place.appendChild(footer).appendChild(resetBtn);
         footer.appendChild(btn);
 
-        let outAmount = 0;
-        let inAmount = 0;
-
         btn.addEventListener('click', function (){
+            let outAmount = 0;
+            let inAmount = 0;
             let add = document.getElementsByClassName("out");
             for(let item of add){
                 outAmount += parseFloat(item.innerHTML);
@@ -174,19 +169,13 @@ function BudgetTable (){
                 inAmount += parseFloat(item.innerHTML);
             }
             let total = document.getElementsByClassName("total");
-            let info = document.getElementById("info");
             total[0].innerHTML = outAmount.toFixed(2);
             total[1].innerHTML = inAmount.toFixed(2);
-            let sum = inAmount - outAmount;
-            total[2].innerHTML = sum.toFixed(2);
-            if(sum < 0){
-                total[2].style.color = "green";
-                info.innerHTML = "Votre solde est positif";
-            }
-            else {
-                total[2].style.color = "red";
-                info.innerHTML = "Votre solde est négatif";
-            }
+
+            total[2].innerHTML = (inAmount - outAmount).toFixed(2);
+            total[2].parentElement.querySelector('td').innerHTML = (inAmount - outAmount) === 0 ? "Votre solde est nul" : (inAmount - outAmount) > 0 ?
+                "Votre solde est positif" : "Votre solde est négatif";
+            total[2].parentElement.style.color = (inAmount - outAmount) === 0 ? "black" : (inAmount - outAmount) > 0 ? "green" : "red";
 
         })
 
@@ -197,7 +186,8 @@ function BudgetTable (){
                     item.innerHTML = (0).toFixed(2);
                 }
             }
-
+            amount[amount.length - 1].parentElement.querySelector('td').innerHTML = "Solde";
+            amount[amount.length - 1].parentElement.style.color = "black";
         })
     }
 }
