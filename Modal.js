@@ -5,7 +5,7 @@
  *  enable to create input element and button
  *      .inputBox id='inputModalId';
  *  create close button
- *      .closeBtn id='btnModalId'
+ *      .closeBtn id='btnFrameId'
  * @param target
  * @param screenColor
  * @param w

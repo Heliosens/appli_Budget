@@ -1,5 +1,6 @@
 /**
- * create title, section,
+ * create title, section, item
+ * write value
  * @constructor
  */
 function BudgetTable (){
@@ -73,7 +74,7 @@ function BudgetTable (){
     }
 
     /**
-     * listen click on item to open modal window and write user answer
+     * listen click on item to open modal window, get & write user answer, calculate and write total
      */
     this.writeValue = function () {
         // get items
@@ -95,14 +96,39 @@ function BudgetTable (){
                 frame.box("Poste de dépense",item.innerHTML);
                 frame.inputBox("number","2rem", "1.5rem", "", true);
                 frame.closeBtn('valider');
+
                 let inputModal = document.getElementById("inputModalId");
-                let btn = document.getElementById("theBox").querySelector('button');
+                let btn = document.getElementById("btnFrameId");
 
                 // validation btn
                 btn.addEventListener('click', ()=>{
-                    // recup input value
+                    // test and recup input value
                     let itemNbr = isNaN(parseFloat(inputModal.value)) ? 0 : parseFloat(inputModal.value);
+                    // write value
                     allNbr[arrayLink.indexOf(item) *2 + 1].innerHTML = itemNbr.toFixed(2);
+                    // count
+                    // reset next count
+                    let outAmount = 0;
+                    let inAmount = 0;
+                    // get new outAmount
+                    let add = document.getElementsByClassName("out");
+                    for(let item of add){
+                        outAmount += parseFloat(item.innerHTML);
+                    }
+                    // get new inAmount
+                    let sub = document.getElementsByClassName("in");
+                    for (let item of sub){
+                        inAmount += parseFloat(item.innerHTML);
+                    }
+                    // get total
+                    let total = document.getElementsByClassName("total");
+                    total[0].innerHTML = outAmount.toFixed(2);
+                    total[1].innerHTML = inAmount.toFixed(2);
+
+                    total[2].innerHTML = (inAmount - outAmount).toFixed(2);
+                    total[2].parentElement.querySelector('td').innerHTML = (inAmount - outAmount) === 0 ? "Votre solde est nul" : (inAmount - outAmount) > 0 ?
+                        "Votre solde est positif" : "Votre solde est négatif";
+                    total[2].parentElement.style.color = (inAmount - outAmount) === 0 ? "black" : (inAmount - outAmount) > 0 ? "green" : "red";
                 })
             })
         }
@@ -133,7 +159,7 @@ function BudgetTable (){
     }
 
     /**
-     * create button in footer
+     * create reset button in footer
      *
      */
     this.count = function (){
@@ -141,43 +167,14 @@ function BudgetTable (){
         let footer = document.createElement('footer');
         footer.style.textAlign = "center";
         let resetBtn = document.createElement("button");
-        let btn = document.createElement("button");
 
-        resetBtn.style.width = "40%";
+        resetBtn.style.width = "30%";
         resetBtn.style.margin = ".5rem";
         resetBtn.type = "submit";
         resetBtn.innerHTML = "Reset";
 
-        btn.style.width = "40%";
-        btn.style.margin = ".5rem";
-        btn.type = "submit";
-        btn.innerHTML = "Total";
-
         let place = document.getElementById("count");
         place.appendChild(footer).appendChild(resetBtn);
-        footer.appendChild(btn);
-
-        btn.addEventListener('click', function (){
-            let outAmount = 0;
-            let inAmount = 0;
-            let add = document.getElementsByClassName("out");
-            for(let item of add){
-                outAmount += parseFloat(item.innerHTML);
-            }
-            let sub = document.getElementsByClassName("in");
-            for (let item of sub){
-                inAmount += parseFloat(item.innerHTML);
-            }
-            let total = document.getElementsByClassName("total");
-            total[0].innerHTML = outAmount.toFixed(2);
-            total[1].innerHTML = inAmount.toFixed(2);
-
-            total[2].innerHTML = (inAmount - outAmount).toFixed(2);
-            total[2].parentElement.querySelector('td').innerHTML = (inAmount - outAmount) === 0 ? "Votre solde est nul" : (inAmount - outAmount) > 0 ?
-                "Votre solde est positif" : "Votre solde est négatif";
-            total[2].parentElement.style.color = (inAmount - outAmount) === 0 ? "black" : (inAmount - outAmount) > 0 ? "green" : "red";
-
-        })
 
         resetBtn.addEventListener('click', function (){
             let amount = document.getElementsByTagName('td');
