@@ -94,7 +94,7 @@ function BudgetTable (){
                     '50%', '40vh', 'white', '3px double black');
                 frame.screen();
                 frame.box("Poste de dépense",item.innerHTML);
-                frame.inputBox("number","2rem", "1.5rem", "", true);
+                frame.inputBox("number","3rem", "2rem", "", true);
                 frame.closeBtn('valider');
 
                 let inputModal = document.getElementById("inputModalId");
