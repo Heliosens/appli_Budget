@@ -14,7 +14,7 @@
  * @param border
  * @constructor
  */
-function ModalWindow (target, screenColor, w, h, boxColor, border){
+function ModalWindow (target, screenColor, boxColor, border){
 
     this.screen = function (){
         let fullScreen = document.createElement('div');
@@ -46,8 +46,6 @@ function ModalWindow (target, screenColor, w, h, boxColor, border){
         // style
         theBox.style.backgroundColor = boxColor;
         theBox.style.border = border;
-        theBox.style.width = w;
-        theBox.style.height = h;
         theBox.style.padding = "1vh";
         theBox.style.fontFamily = "sans-serif";
 

@@ -5,8 +5,8 @@ main.style.height = innerHeight + "px";
 // create 2 columns
 let side1 = document.createElement('div');
 let side2 = document.createElement('div');
-side1.id = "side";
-side2.id = "side";
+side1.className = "side";
+side2.className = "side";
 main.appendChild(side1);
 main.appendChild(side2);
 

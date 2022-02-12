@@ -32,7 +32,7 @@ h2{
     margin: 0;
 }
 
-#side {
+.side {
     flex-basis: 50%;
 }
 
@@ -76,6 +76,10 @@ table a:hover {
     width: 25%;
 }
 
+thead {
+    border: 1px solid teal;
+}
+
 th {
     text-align: left;
     padding-left: 2vw;
@@ -99,6 +103,7 @@ td {
 /**    modal window    **/
 #theBox {
     text-align: center;
+    width: 50%;
 }
 
 #theBox h1 {
@@ -119,4 +124,9 @@ button {
         flex-direction: column;
         flex-wrap: nowrap;
     }
+
+    #theBox {
+        width: 80%;
+    }
+
 }

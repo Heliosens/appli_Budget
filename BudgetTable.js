@@ -89,8 +89,8 @@ function BudgetTable (){
                 e.preventDefault();
 
                 // invoke modal window
-                let frame = new ModalWindow(main,'rgba(173, 216, 230, 0.8)',
-                    '50%', '40vh', 'white', '3px double black');
+                let frame = new ModalWindow(main,'rgba(173, 216, 230, 0.5)',
+                    'white', '3px double black');
                 frame.screen();
                 frame.box("Poste de dépense",item.innerHTML);
                 frame.inputBox("number","3rem", "2rem", "", true);
