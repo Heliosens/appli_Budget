@@ -1,7 +1,8 @@
-// get height
+// get main height
 let main = document.querySelector('main');
 main.style.height = innerHeight + "px";
 
+// create 2 columns
 let side1 = document.createElement('div');
 let side2 = document.createElement('div');
 side1.id = "side";
@@ -9,6 +10,7 @@ side2.id = "side";
 main.appendChild(side1);
 main.appendChild(side2);
 
+// create budget table
 let place = new BudgetTable();
 
 place.titleTxt(main,"Budget mensuel", "title");

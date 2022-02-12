@@ -57,7 +57,6 @@ function BudgetTable (){
         table.appendChild(tbody);
 
         // create items
-
         for(let line of itemHtml){
             let tr = document.createElement('tr');
             let tdLink = document.createElement('td');
