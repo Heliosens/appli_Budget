@@ -8,8 +8,6 @@
  *      .closeBtn id='btnFrameId'
  * @param target
  * @param screenColor
- * @param w
- * @param h
  * @param boxColor
  * @param border
  * @constructor
