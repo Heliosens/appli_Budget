@@ -1,6 +1,8 @@
 /**
  * create title, section, item
  * write value
+ * result
+ * reset button
  * @constructor
  */
 function BudgetTable (){
@@ -33,7 +35,7 @@ function BudgetTable (){
 
      /**
      * create div with title in targeted section,
-     * give className to amount "out" for expense, "in" for income
+     * give className to amount "out" for expenses, "in" for income
      * @param secId
      * @param signe
      * @param headName
@@ -92,7 +94,8 @@ function BudgetTable (){
                 let frame = new ModalWindow(main,'rgba(173, 216, 230, 0.5)',
                     'white', '3px double black');
                 frame.screen();
-                frame.box("Poste de dépense",item.innerHTML);
+                let txt = item.closest("table").querySelector('th').innerHTML;
+                frame.box(txt,item.innerHTML);
                 frame.inputBox("number","3rem", "2rem", "", true);
                 frame.closeBtn('valider');
 
@@ -101,10 +104,10 @@ function BudgetTable (){
 
                 // validation btn
                 btn.addEventListener('click', ()=>{
-                    // test and recup input value
-                    let itemNbr = isNaN(parseFloat(inputModal.value)) ? 0 : parseFloat(inputModal.value);
+                    // check if input value is a number and get value or 0
+                    let itemValue = isNaN(parseFloat(inputModal.value)) ? 0 : parseFloat(inputModal.value);
                     // write value
-                    allNbr[arrayLink.indexOf(item) *2 + 1].innerHTML = itemNbr.toFixed(2);
+                    allNbr[arrayLink.indexOf(item) *2 + 1].innerHTML = itemValue.toFixed(2);
                     // count
                     // reset next count
                     let outAmount = 0;
@@ -119,15 +122,19 @@ function BudgetTable (){
                     for (let item of sub){
                         inAmount += parseFloat(item.innerHTML);
                     }
-                    // get total
+                    // get total outcome
                     let total = document.getElementsByClassName("total");
                     total[0].innerHTML = outAmount.toFixed(2);
                     total[1].innerHTML = inAmount.toFixed(2);
 
                     total[2].innerHTML = (inAmount - outAmount).toFixed(2);
-                    total[2].parentElement.querySelector('td').innerHTML = (inAmount - outAmount) === 0 ? "Votre solde est nul" : (inAmount - outAmount) > 0 ?
+                    total[2].parentElement.querySelector('td').innerHTML = (inAmount - outAmount) === 0 ?
+                        "Votre solde est nul" : (inAmount - outAmount) > 0 ?
                         "Votre solde est positif" : "Votre solde est négatif";
-                    total[2].parentElement.style.color = (inAmount - outAmount) === 0 ? "black" : (inAmount - outAmount) > 0 ? "green" : "red";
+                    total[2].parentElement.style.color = (inAmount - outAmount) === 0 ? "black" :
+                        (inAmount - outAmount) > 0 ? "green" : "red";
+
+
                 })
             })
         }
@@ -159,7 +166,6 @@ function BudgetTable (){
 
     /**
      * create reset button in footer
-     *
      */
     this.count = function (){
 
