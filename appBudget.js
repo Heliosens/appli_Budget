@@ -42,7 +42,7 @@ place.budgetItem("income", "in", "Recettes", "Salaires", "Aides", "Rentes", "Aut
 place.budgetItem("saving", "", "Epargne", "Epargne");
 
 // listen links to open modal window
-place.writeValue();
+place.writeValue(main);
 
 // create buttons to count and reset
 place.count();

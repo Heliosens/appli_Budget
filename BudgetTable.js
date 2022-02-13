@@ -1,8 +1,10 @@
 /**
- * create title, section, item
- * write value
- * result
- * reset button
+ * create title
+ * create section which contain items
+ * create items
+ * write value in selected item
+ * create result which contains total updated at each entry
+ * create reset button
  * @constructor
  */
 function BudgetTable (){
@@ -77,10 +79,10 @@ function BudgetTable (){
     /**
      * listen click on item to open modal window, get & write user answer, calculate and write total
      */
-    this.writeValue = function () {
+    this.writeValue = function (targetElem) {
         // get items
-        let allLink = main.getElementsByTagName('a');
-        let allNbr = main.getElementsByTagName('td');
+        let allLink = targetElem.getElementsByTagName('a');
+        let allNbr = targetElem.getElementsByTagName('td');
 
         // convert html collection to array
         let arrayLink = Array.from(allLink);
@@ -91,7 +93,7 @@ function BudgetTable (){
                 e.preventDefault();
 
                 // invoke modal window
-                let frame = new ModalWindow(main,'rgba(173, 216, 230, 0.5)',
+                let frame = new ModalWindow(targetElem,'rgba(173, 216, 230, 0.5)',
                     'white', '3px double black');
                 frame.screen();
                 let txt = item.closest("table").querySelector('th').innerHTML;
@@ -105,7 +107,7 @@ function BudgetTable (){
                 // validation btn
                 btn.addEventListener('click', ()=>{
                     // check if input value is a number and get value or 0
-                    let itemValue = isNaN(parseFloat(inputModal.value)) ? 0 : parseFloat(inputModal.value);
+                    let itemValue = isNaN(parseFloat(inputModal.value)) ? 0 : Math.abs(parseFloat(inputModal.value));
                     // write value
                     allNbr[arrayLink.indexOf(item) *2 + 1].innerHTML = itemValue.toFixed(2);
                     // count
