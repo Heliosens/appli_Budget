@@ -106,12 +106,12 @@ function BudgetTable (){
 
                 // validation btn
                 btn.addEventListener('click', ()=>{
-                    // check if input value is a number and get value or 0
+                    // get absolute value or 0
                     let itemValue = isNaN(parseFloat(inputModal.value)) ? 0 : Math.abs(parseFloat(inputModal.value));
                     // write value
                     allNbr[arrayLink.indexOf(item) *2 + 1].innerHTML = itemValue.toFixed(2);
                     // count
-                    // reset next count
+                    // reset amount
                     let outAmount = 0;
                     let inAmount = 0;
                     // get new outAmount
@@ -124,19 +124,20 @@ function BudgetTable (){
                     for (let item of sub){
                         inAmount += parseFloat(item.innerHTML);
                     }
-                    // get total outcome
+                    // display outcome
                     let total = document.getElementsByClassName("total");
                     total[0].innerHTML = outAmount.toFixed(2);
                     total[1].innerHTML = inAmount.toFixed(2);
-
                     total[2].innerHTML = (inAmount - outAmount).toFixed(2);
+
+                    // adapt the text
                     total[2].parentElement.querySelector('td').innerHTML = (inAmount - outAmount) === 0 ?
                         "Votre solde est nul" : (inAmount - outAmount) > 0 ?
                         "Votre solde est positif" : "Votre solde est négatif";
+
+                    // adapt the color
                     total[2].parentElement.style.color = (inAmount - outAmount) === 0 ? "black" :
                         (inAmount - outAmount) > 0 ? "green" : "red";
-
-
                 })
             })
         }
