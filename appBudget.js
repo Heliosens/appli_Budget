@@ -45,4 +45,4 @@ place.budgetItem("saving", "", "Epargne", "Epargne");
 place.writeValue(main);
 
 // create buttons to count and reset
-place.count();
+place.reset();

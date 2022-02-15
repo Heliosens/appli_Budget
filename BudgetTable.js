@@ -170,7 +170,7 @@ function BudgetTable (){
     /**
      * create reset button in footer
      */
-    this.count = function (){
+    this.reset = function (){
 
         let footer = document.createElement('footer');
         footer.style.textAlign = "center";
