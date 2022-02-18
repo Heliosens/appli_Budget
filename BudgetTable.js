@@ -69,6 +69,7 @@ function BudgetTable (){
             tdLink.appendChild(link);
             let td = document.createElement('td');
             td.className = signe;
+            td.classList.add("nbr");
             td.innerHTML = (0).toFixed(2);
             tr.appendChild(tdLink);
             tr.appendChild(td);
@@ -82,7 +83,7 @@ function BudgetTable (){
     this.writeValue = function (targetElem) {
         // get items
         let allLink = targetElem.getElementsByTagName('a');
-        let allNbr = targetElem.getElementsByTagName('td');
+        let allNbr = targetElem.getElementsByClassName("nbr");
 
         // convert html collection to array
         let arrayLink = Array.from(allLink);
@@ -109,7 +110,7 @@ function BudgetTable (){
                     // get absolute value or 0
                     let itemValue = isNaN(parseFloat(inputModal.value)) ? 0 : Math.abs(parseFloat(inputModal.value));
                     // write value
-                    allNbr[arrayLink.indexOf(item) *2 + 1].innerHTML = itemValue.toFixed(2);
+                    allNbr[arrayLink.indexOf(item)].innerHTML = itemValue.toFixed(2);
                     // count
                     // reset amount
                     let outAmount = 0;
