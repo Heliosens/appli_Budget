@@ -14,6 +14,9 @@
  */
 function ModalWindow (target, screenColor, boxColor, border){
 
+    /**
+     * create background
+     */
     this.screen = function (){
         let fullScreen = document.createElement('div');
         fullScreen.style.width = innerWidth + "px";
@@ -77,7 +80,7 @@ function ModalWindow (target, screenColor, boxColor, border){
     }
 
     /**
-     *
+     * create input
      * @param inputType
      * @param h
      * @param sizeTxt

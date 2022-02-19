@@ -62,11 +62,13 @@ function BudgetTable (){
 
         // create items
         for(let line of itemHtml){
+            // case of link
             let tr = document.createElement('tr');
             let tdLink = document.createElement('td');
             let link = document.createElement('a');
             link.innerHTML = line;
             tdLink.appendChild(link);
+            // case of number
             let td = document.createElement('td');
             td.className = signe;
             td.classList.add("nbr");
@@ -78,27 +80,24 @@ function BudgetTable (){
     }
 
     /**
-     * listen click on item to open modal window, get & write user answer, calculate and write total
+     * listen click on item to open modal window, get & write user answer, calculate and update total
      */
     this.writeValue = function (targetElem) {
         // get items
         let allLink = targetElem.getElementsByTagName('a');
         let allNbr = targetElem.getElementsByClassName("nbr");
 
-        // convert html collection to array
-        let arrayLink = Array.from(allLink);
-
         // listen item
-        for (let item of arrayLink){
-            item.addEventListener('click', function (e){
+        for (let i = 0 ; i < allLink.length ; i++){
+            allLink[i].addEventListener('click', function (e){
                 e.preventDefault();
 
                 // invoke modal window
                 let frame = new ModalWindow(targetElem,'rgba(173, 216, 230, 0.5)',
                     'white', '3px double black');
                 frame.screen();
-                let txt = item.closest("table").querySelector('th').innerHTML;
-                frame.box(txt,item.innerHTML);
+                let txt = allLink[i].closest("table").querySelector('th').innerHTML;
+                frame.box(txt,allLink[i].innerHTML);
                 frame.inputBox("number","3rem", "2rem", "", true);
                 frame.closeBtn('valider');
 
@@ -110,19 +109,19 @@ function BudgetTable (){
                     // get absolute value or 0
                     let itemValue = isNaN(parseFloat(inputModal.value)) ? 0 : Math.abs(parseFloat(inputModal.value));
                     // write value
-                    allNbr[arrayLink.indexOf(item)].innerHTML = itemValue.toFixed(2);
+                    allNbr[i].innerHTML = itemValue.toFixed(2);
                     // count
                     // reset amount
                     let outAmount = 0;
                     let inAmount = 0;
                     // get new outAmount
-                    let add = document.getElementsByClassName("out");
-                    for(let item of add){
+                    let sub = document.getElementsByClassName("out");
+                    for(let item of sub){
                         outAmount += parseFloat(item.innerHTML);
                     }
                     // get new inAmount
-                    let sub = document.getElementsByClassName("in");
-                    for (let item of sub){
+                    let add = document.getElementsByClassName("in");
+                    for (let item of add){
                         inAmount += parseFloat(item.innerHTML);
                     }
                     // display outcome
